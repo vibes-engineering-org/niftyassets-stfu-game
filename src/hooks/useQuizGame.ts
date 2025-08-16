@@ -11,6 +11,8 @@ export interface GameState {
   gameOver: boolean;
   gameCompleted: boolean;
   showGameOverPopup: boolean;
+  showExplanationPopup: boolean;
+  lastQuestionExplanation: string | null;
 }
 
 export const useQuizGame = () => {
@@ -24,6 +26,8 @@ export const useQuizGame = () => {
     gameOver: false,
     gameCompleted: false,
     showGameOverPopup: false,
+    showExplanationPopup: false,
+    lastQuestionExplanation: null,
   });
 
   const getCurrentQuestion = useCallback((): QuizQuestion | null => {
@@ -48,6 +52,16 @@ export const useQuizGame = () => {
       const sessionComplete = newQuestionsInSession >= prev.maxQuestionsPerSession;
       const nextQuestionIndex = prev.currentQuestionIndex + 1;
       const allQuestionsComplete = nextQuestionIndex >= quizQuestions.length;
+
+      // If answer is incorrect, show explanation popup
+      if (!isCorrect) {
+        return {
+          ...prev,
+          score: newScore,
+          showExplanationPopup: true,
+          lastQuestionExplanation: currentQuestion.explanation,
+        };
+      }
 
       // Check if game is over due to low score
       if (newScore <= -10) {
@@ -102,6 +116,8 @@ export const useQuizGame = () => {
       gameOver: false,
       gameCompleted: false,
       showGameOverPopup: false,
+      showExplanationPopup: false,
+      lastQuestionExplanation: null,
     });
   }, []);
 
@@ -110,6 +126,59 @@ export const useQuizGame = () => {
       ...prev,
       showGameOverPopup: false,
     }));
+  }, []);
+
+  const closeExplanationPopup = useCallback(() => {
+    setGameState(prev => {
+      const newQuestionsInSession = prev.questionsInSession + 1;
+      const sessionComplete = newQuestionsInSession >= prev.maxQuestionsPerSession;
+      const nextQuestionIndex = prev.currentQuestionIndex + 1;
+      const allQuestionsComplete = nextQuestionIndex >= quizQuestions.length;
+
+      // Check if game is over due to low score
+      if (prev.score <= -10) {
+        return {
+          ...prev,
+          showExplanationPopup: false,
+          lastQuestionExplanation: null,
+          gameOver: true,
+          showGameOverPopup: true,
+        };
+      }
+
+      // Check if all questions are completed
+      if (allQuestionsComplete) {
+        return {
+          ...prev,
+          showExplanationPopup: false,
+          lastQuestionExplanation: null,
+          currentQuestionIndex: nextQuestionIndex,
+          questionsInSession: newQuestionsInSession,
+          gameCompleted: true,
+        };
+      }
+
+      // Check if session is complete
+      if (sessionComplete) {
+        return {
+          ...prev,
+          showExplanationPopup: false,
+          lastQuestionExplanation: null,
+          currentQuestionIndex: nextQuestionIndex,
+          currentSession: prev.currentSession + 1,
+          questionsInSession: 0,
+        };
+      }
+
+      // Normal progression
+      return {
+        ...prev,
+        showExplanationPopup: false,
+        lastQuestionExplanation: null,
+        currentQuestionIndex: nextQuestionIndex,
+        questionsInSession: newQuestionsInSession,
+      };
+    });
   }, []);
 
   const getSessionProgress = useCallback(() => {
@@ -134,6 +203,7 @@ export const useQuizGame = () => {
     answerQuestion,
     resetGame,
     closeGameOverPopup,
+    closeExplanationPopup,
     getSessionProgress,
     getTotalProgress,
   };

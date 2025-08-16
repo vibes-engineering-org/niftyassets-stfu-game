@@ -11,6 +11,7 @@ export default function QuizGame() {
     answerQuestion,
     resetGame,
     closeGameOverPopup,
+    closeExplanationPopup,
     getSessionProgress,
     getTotalProgress
   } = useQuizGame();
@@ -18,6 +19,30 @@ export default function QuizGame() {
   const currentQuestion = getCurrentQuestion();
   const sessionProgress = getSessionProgress();
   const totalProgress = getTotalProgress();
+
+  // Explanation Popup for incorrect answers
+  if (gameState.showExplanationPopup && gameState.lastQuestionExplanation) {
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle className="text-center text-orange-600">Incorrect Answer</CardTitle>
+          </CardHeader>
+          <CardContent className="text-center space-y-4">
+            <p className="text-lg font-medium">
+              {gameState.lastQuestionExplanation}
+            </p>
+            <p className="text-sm text-gray-600">
+              Current Score: {gameState.score}
+            </p>
+            <Button onClick={closeExplanationPopup} className="w-full">
+              Continue
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   // Game Over Popup
   if (gameState.showGameOverPopup) {
