@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import { DaimoPayTransferButton } from "~/components/daimo-pay-transfer-button";
+import { Button } from "~/components/ui/button";
 
 const STFU_TOKEN_CONTRACT = "0x5dA35cD34267848bDeDa3406dC8efb90eBd24B07" as const;
+const TOKEN_INFO_URL = "https://www.clanker.world/clanker/0x5dA35cD34267848bDeDa3406dC8efb90eBd24B07" as const;
 
 export function WelcomeScreen() {
   return (
@@ -14,7 +15,7 @@ export function WelcomeScreen() {
           Welcome to $STFU
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300">
-          Get your Original $STFU tokens today
+          Original $STFU Token Information
         </p>
       </div>
 
@@ -45,17 +46,19 @@ export function WelcomeScreen() {
               </p>
             </div>
             
-            <DaimoPayTransferButton
-              text="Buy Original $STFU Token"
-              toAddress={STFU_TOKEN_CONTRACT}
-              amount="1"
-              onPaymentStarted={() => {
-                console.log("$STFU token purchase started");
-              }}
-              onPaymentCompleted={() => {
-                console.log("$STFU token purchase completed");
-              }}
-            />
+            <Button 
+              asChild 
+              className="w-full"
+              size="lg"
+            >
+              <a 
+                href={TOKEN_INFO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Token Information
+              </a>
+            </Button>
           </div>
         </CardContent>
       </Card>
