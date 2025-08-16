@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import { QuizQuestion, quizQuestions } from '~/data/quiz-questions';
+import { useState, useCallback, useMemo } from 'react';
+import { Web3QuizQuestion, generateRandomizedQuestions } from '~/data/web3-quiz-questions';
 
 export interface GameState {
   currentQuestionIndex: number;
@@ -16,6 +16,9 @@ export interface GameState {
 }
 
 export const useQuizGame = () => {
+  // Generate randomized questions once when the hook is created
+  const gameQuestions = useMemo(() => generateRandomizedQuestions(), []);
+  
   const [gameState, setGameState] = useState<GameState>({
     currentQuestionIndex: 0,
     score: 0,
@@ -30,12 +33,12 @@ export const useQuizGame = () => {
     lastQuestionExplanation: null,
   });
 
-  const getCurrentQuestion = useCallback((): QuizQuestion | null => {
-    if (gameState.currentQuestionIndex >= quizQuestions.length) {
+  const getCurrentQuestion = useCallback((): Web3QuizQuestion | null => {
+    if (gameState.currentQuestionIndex >= gameQuestions.length) {
       return null;
     }
-    return quizQuestions[gameState.currentQuestionIndex];
-  }, [gameState.currentQuestionIndex]);
+    return gameQuestions[gameState.currentQuestionIndex];
+  }, [gameState.currentQuestionIndex, gameQuestions]);
 
   const answerQuestion = useCallback((userAnswer: boolean) => {
     const currentQuestion = getCurrentQuestion();
@@ -51,7 +54,7 @@ export const useQuizGame = () => {
       const newQuestionsInSession = prev.questionsInSession + 1;
       const sessionComplete = newQuestionsInSession >= prev.maxQuestionsPerSession;
       const nextQuestionIndex = prev.currentQuestionIndex + 1;
-      const allQuestionsComplete = nextQuestionIndex >= quizQuestions.length;
+      const allQuestionsComplete = nextQuestionIndex >= gameQuestions.length;
 
       // If answer is incorrect, show explanation popup
       if (!isCorrect) {
@@ -103,9 +106,12 @@ export const useQuizGame = () => {
         questionsInSession: newQuestionsInSession,
       };
     });
-  }, [gameState, getCurrentQuestion]);
+  }, [gameState, getCurrentQuestion, gameQuestions.length]);
 
   const resetGame = useCallback(() => {
+    // Generate new randomized questions for the new game
+    const newQuestions = generateRandomizedQuestions();
+    
     setGameState({
       currentQuestionIndex: 0,
       score: 0,
@@ -119,7 +125,10 @@ export const useQuizGame = () => {
       showExplanationPopup: false,
       lastQuestionExplanation: null,
     });
-  }, []);
+    
+    // Replace current questions with new randomized set
+    gameQuestions.splice(0, gameQuestions.length, ...newQuestions);
+  }, [gameQuestions]);
 
   const closeGameOverPopup = useCallback(() => {
     setGameState(prev => ({
@@ -133,7 +142,7 @@ export const useQuizGame = () => {
       const newQuestionsInSession = prev.questionsInSession + 1;
       const sessionComplete = newQuestionsInSession >= prev.maxQuestionsPerSession;
       const nextQuestionIndex = prev.currentQuestionIndex + 1;
-      const allQuestionsComplete = nextQuestionIndex >= quizQuestions.length;
+      const allQuestionsComplete = nextQuestionIndex >= gameQuestions.length;
 
       // Check if game is over due to low score
       if (prev.score <= -10) {
@@ -187,15 +196,15 @@ export const useQuizGame = () => {
       total: gameState.maxQuestionsPerSession,
       percentage: (gameState.questionsInSession / gameState.maxQuestionsPerSession) * 100,
     };
-  }, [gameState.questionsInSession, gameState.maxQuestionsPerSession]);
+  }, [gameState.questionsInSession, gameState.maxQuestionsPerSession, gameQuestions.length]);
 
   const getTotalProgress = useCallback(() => {
     return {
       current: gameState.currentQuestionIndex,
-      total: quizQuestions.length,
-      percentage: (gameState.currentQuestionIndex / quizQuestions.length) * 100,
+      total: gameQuestions.length,
+      percentage: (gameState.currentQuestionIndex / gameQuestions.length) * 100,
     };
-  }, [gameState.currentQuestionIndex]);
+  }, [gameState.currentQuestionIndex, gameQuestions]);
 
   return {
     gameState,
