@@ -12,10 +12,10 @@ export function WelcomeScreen() {
     <div className="w-full max-w-2xl mx-auto space-y-8">
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-          Welcome to $STFU
+          $STFU Quiz
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300">
-          Original $STFU Token Information
+          Think you know Web3? Say yes or $stfu.
         </p>
       </div>
 
