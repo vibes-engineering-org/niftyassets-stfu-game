@@ -27,7 +27,7 @@ export function WelcomeScreen() {
           <div className="flex justify-center">
             <div className="relative w-64 h-64 rounded-lg overflow-hidden">
               <Image
-                src="/$STFU.jfif"
+                src="/20250726_020506.jpg"
                 alt="STFU Token"
                 fill
                 className="object-cover"
