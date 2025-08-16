@@ -7,7 +7,11 @@ import { Button } from "~/components/ui/button";
 const STFU_TOKEN_CONTRACT = "0x5dA35cD34267848bDeDa3406dC8efb90eBd24B07" as const;
 const TOKEN_INFO_URL = "https://www.clanker.world/clanker/0x5dA35cD34267848bDeDa3406dC8efb90eBd24B07" as const;
 
-export function WelcomeScreen() {
+interface WelcomeScreenProps {
+  onStartGame: () => void;
+}
+
+export function WelcomeScreen({ onStartGame }: WelcomeScreenProps) {
   return (
     <div className="w-full max-w-2xl mx-auto space-y-8">
       <div className="text-center space-y-4">
@@ -46,19 +50,30 @@ export function WelcomeScreen() {
               </p>
             </div>
             
-            <Button 
-              asChild 
-              className="w-full"
-              size="lg"
-            >
-              <a 
-                href={TOKEN_INFO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="space-y-3">
+              <Button 
+                onClick={onStartGame}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                size="lg"
               >
-                View Token Information
-              </a>
-            </Button>
+                Start Quiz Game
+              </Button>
+              
+              <Button 
+                asChild 
+                className="w-full"
+                variant="outline"
+                size="lg"
+              >
+                <a 
+                  href={TOKEN_INFO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Token Information
+                </a>
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>

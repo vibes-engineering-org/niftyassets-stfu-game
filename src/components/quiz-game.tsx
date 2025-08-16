@@ -1,10 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import { useQuizGame } from '~/hooks/useQuizGame';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
+import { HighScores } from '~/components/high-scores';
 
-export default function QuizGame() {
+interface QuizGameProps {
+  onBackToWelcome: () => void;
+}
+
+export default function QuizGame({ onBackToWelcome }: QuizGameProps) {
+  const [showHighScores, setShowHighScores] = useState(false);
   const {
     gameState,
     getCurrentQuestion,
@@ -19,6 +26,20 @@ export default function QuizGame() {
   const currentQuestion = getCurrentQuestion();
   const sessionProgress = getSessionProgress();
   const totalProgress = getTotalProgress();
+
+  if (showHighScores) {
+    return (
+      <HighScores
+        currentScore={gameState.gameCompleted || gameState.gameOver ? gameState.score : undefined}
+        questionsAnswered={gameState.currentQuestionIndex}
+        onClose={() => setShowHighScores(false)}
+        onPlayAgain={() => {
+          resetGame();
+          setShowHighScores(false);
+        }}
+      />
+    );
+  }
 
   // Explanation Popup for incorrect answers
   if (gameState.showExplanationPopup && gameState.lastQuestionExplanation) {
@@ -60,11 +81,17 @@ export default function QuizGame() {
               Final Score: {gameState.score}
             </p>
             <div className="space-y-2">
+              <Button 
+                onClick={() => setShowHighScores(true)} 
+                className="w-full bg-blue-600 hover:bg-blue-700"
+              >
+                View High Scores
+              </Button>
               <Button onClick={resetGame} className="w-full">
                 Start New Game
               </Button>
-              <Button onClick={closeGameOverPopup} variant="outline" className="w-full">
-                Close
+              <Button onClick={onBackToWelcome} variant="outline" className="w-full">
+                Back to Welcome
               </Button>
             </div>
           </CardContent>
@@ -88,9 +115,20 @@ export default function QuizGame() {
             <p className="text-xl font-bold">
               Final Score: {gameState.score}
             </p>
-            <Button onClick={resetGame} className="w-full">
-              Play Again
-            </Button>
+            <div className="space-y-2">
+              <Button 
+                onClick={() => setShowHighScores(true)} 
+                className="w-full bg-blue-600 hover:bg-blue-700"
+              >
+                View High Scores
+              </Button>
+              <Button onClick={resetGame} className="w-full">
+                Play Again
+              </Button>
+              <Button onClick={onBackToWelcome} variant="outline" className="w-full">
+                Back to Welcome
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -182,11 +220,23 @@ export default function QuizGame() {
         </CardContent>
       </Card>
 
-      {/* Reset Game Button */}
-      <div className="text-center">
-        <Button onClick={resetGame} variant="outline" size="sm">
-          Reset Game
-        </Button>
+      {/* Game Controls */}
+      <div className="text-center space-y-2">
+        <div className="flex space-x-2 justify-center">
+          <Button 
+            onClick={() => setShowHighScores(true)} 
+            variant="outline" 
+            size="sm"
+          >
+            High Scores
+          </Button>
+          <Button onClick={resetGame} variant="outline" size="sm">
+            Reset Game
+          </Button>
+          <Button onClick={onBackToWelcome} variant="outline" size="sm">
+            Exit Game
+          </Button>
+        </div>
       </div>
     </div>
   );
