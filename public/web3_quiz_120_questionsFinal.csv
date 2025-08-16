@@ -1,0 +1,119 @@
+statement,answer,difficulty
+The token $stfu was deployed based on a tweet from Jesse Pollak,yes,4
+CryptoPunks launched in 2020.,stfu,4
+Vitalik donated more than $1B worth of SHIBA tokens to a COVID relief fund.,yes,2
+DAO stands for “Decentralized Autonomous Organization.”,yes,3
+Ethereum switched from proof-of-work to proof-of-stake in 2022.,yes,4
+Ethereum staking rewards are always fixed at 6%.,stfu,4
+Base`s hole userbase is indians,stfu,4
+Ethereum’s ICO in 2014 raised around $18M.,yes,4
+Bitcoin’s max supply is 42 million coins.,stfu,5
+"The highest Ethereum gas fee ever was $4,000.",stfu,4
+Vitalik co-founded Ethereum when he was 19.,yes,2
+El Salvador made Ethereum legal tender.,stfu,4
+Some people lost NFTs by signing malicious “setApprovalForAll” transactions.,yes,2
+Warpcast only works on Solana.,stfu,4
+Vitalik once suggested Ethereum block sizes should target “sufficient decentralization.”,yes,2
+Vitalik once received 50% of all SHIBA tokens directly from its creators.,yes,2
+The Merge increased Ethereum’s block time to 24 seconds.,stfu,5
+Vitalik once showed up to meet Vladimir Putin wearing a Dogecoin T-shirt.,yes,2
+Ethereum’s proof-of-stake system allows slashing only above 64 ETH.,stfu,5
+Gnosis Safe requires no signatures to approve a transaction.,stfu,4
+Vitalik donated only $100M worth of SHIBA tokens to a COVID relief fund.,stfu,2
+Farcaster usernames can be registered as “farcaster.eth” ENS names.,yes,3
+Farcaster is owned by Meta.,stfu,3
+Yield farming is a practice of providing liquidity for token rewards.,yes,4
+The Merge was also known as Ethereum 2.0.,yes,3
+Coinbase launched Base in 2023 as its L2 on Ethereum.,yes,3
+Farcaster is a decentralized social protocol that runs on Ethereum.,yes,3
+Ethereum considered proof-of-authority before proof-of-stake.,stfu,4
+DeFi summer happened in 2017.,stfu,4
+Uniswap pioneered automated market makers in DeFi.,yes,4
+ENS domains are regulated under ICANN alongside traditional DNS domains.,stfu,2
+NFTs are stored as tokens on Ethereum following ERC-721.,yes,2
+Mt. Gox was once the biggest Bitcoin exchange before collapsing in 2014.,yes,4
+DAOs often vote with governance tokens.,yes,3
+Ethereum resets validator rewards every four years.,stfu,4
+OpenSea launched in 2017 as one of the first NFT marketplaces.,yes,2
+Running your own validator requires 64 ETH.,stfu,5
+ConstitutionDAO actually won the Constitution auction but later sold it back.,stfu,3
+Running your own validator requires exactly 32 ETH.,yes,4
+Staking rewards on Ethereum vary depending on total ETH staked.,yes,4
+Satoshi Nakamoto was confirmed as Vitalik Buterin.,stfu,2
+Coinbase tested an AI chatbot in 2022 that replaced human wallet recovery support.,stfu,4
+"Circle issues USDC, one of the most widely used stablecoins.",yes,4
+The Bitcoin whitepaper was released in 2008.,yes,4
+Polygon is a Layer 1 blockchain.,stfu,4
+Jack Dorsey’s first tweet sold as an NFT for $2.9M.,yes,2
+Cold wallets lose functionality if not connected to the internet once a month.,stfu,4
+MetaMask added a secret reward system in 2021 that gave tokens to anyone who clicked the fox 100 times.,stfu,4
+Jesse Pollak previously worked on Coinbase Wallet.,yes,4
+zk-rollups use zero-knowledge proofs for scalability.,yes,4
+The first block on Bitcoin is called the Genesis block.,yes,4
+Warpcast is the most popular client for Farcaster.,yes,3
+Twitter replaced its bird logo with Doge in 2022.,stfu,4
+Gwei is the smallest unit commonly used for Ethereum gas fees.,yes,4
+Mt. Gox collapsed in 2017.,stfu,4
+The DAO hack in 2016 split Ethereum into ETH and ETC.,yes,3
+Gas wars have caused some NFT mints to cost more in fees than the NFTs themselves.,yes,2
+Gas wars are impossible on Ethereum.,stfu,4
+Vitalik ran a TikTok account with Ethereum explainers in 2020.,stfu,2
+Coinbase went public on NASDAQ in 2021.,yes,4
+"Vitalik has published essays about AI, governance, and even soulbound tokens.",yes,2
+Coinbase launched Base in 2021.,stfu,3
+Coinbase went public in 2019.,stfu,4
+Bitcoin’s max supply is 21 million coins.,yes,4
+The Merge cut Ethereum’s energy use by more than 99%.,yes,3
+Jesse Pollak is the lead behind Base.,yes,3
+Layer 2 networks use Bitcoin mining for security.,stfu,4
+Twitter once replaced its bird logo with Doge.,yes,4
+Farcaster accounts are tied to Ethereum wallets.,yes,3
+Base doesn’t have its own token; it uses ETH for gas.,yes,3
+Ethereum uses SHA-256 as its hashing algorithm.,stfu,5
+ENS names like “sex.eth” and “god.eth” have sold for six figures.,yes,2
+Jesse Pollak released a rap album to promote Base.,stfu,3
+Binance was founded in 2013.,stfu,5
+"The Genesis block was mined on Ethereum, not Bitcoin.",stfu,4
+"NFTs can represent things beyond art, like music or tickets.",yes,2
+Polygon is a sidechain and scaling solution for Ethereum.,yes,4
+"NFTs can only represent digital art, nothing else.",stfu,2
+Satoshi Nakamoto disappeared from public communication around 2010.,yes,4
+NFTs are automatically mirrored to IPFS when minted.,stfu,2
+The Merge cut Ethereum’s energy usage by about 45%.,stfu,5
+Vitalik co-founded Ethereum at age 25.,stfu,2
+Coinbase replaced its support team with a model named Jeff.,stfu,4
+SHIBA tokens were created by Vitalik.,stfu,2
+Warpcast integrates tipping with stablecoins.,yes,4
+"Some countries have adopted Bitcoin as legal tender (e.g., El Salvador).",yes,4
+Ethereum smart contracts are written mainly in Solidity.,yes,4
+OpenSea was founded in 2015.,stfu,5
+Layer 2 adoption grew significantly in 2023.,yes,4
+Warpcast was acquired by TikTok in 2024.,stfu,4
+Ethereum block times average about 12 seconds (pre-Merge).,yes,3
+Layer 2 adoption declined in 2023.,stfu,4
+Ethereum’s ICO happened in 2013.,stfu,5
+Ethereum’s ICO raised about $28M in 2015.,stfu,5
+DAOs must be incorporated as legal entities in Switzerland.,stfu,3
+Coinbase’s Base network uses optimistic rollup technology.,yes,3
+Binance was founded by Changpeng Zhao in 2017.,yes,4
+Bitcoin whitepaper was released in 2011.,stfu,4
+A DAO raised over $40M trying to buy a copy of the U.S. Constitution but got outbid.,yes,3
+Many stablecoins are backed by reserves like cash or U.S. Treasuries.,yes,4
+Layer 2 rollups like Optimism and Arbitrum scale Ethereum by batching transactions.,yes,4
+Someone actually paid over $1M for a pixelated picture of a rock.,yes,4
+CryptoPunks were one of the first popular NFT collections.,yes,2
+Yield farming began in 2015.,stfu,5
+Uniswap was built on Bitcoin originally.,stfu,4
+DAO hack was in 2018.,stfu,3
+"The ENS name “sex.eth” sold for only $60,000.",stfu,5
+Ethereum gas fees were eliminated by EIP-1559.,stfu,4
+Vitalik has never spoken publicly about DAOs.,stfu,3
+Base requires its own $BASE token to pay for gas.,stfu,3
+The London hard fork introduced EIP-1559 to burn gas fees.,yes,4
+Someone paid over $10M for a pixelated picture of a rock.,stfu,4
+All NFTs sold in the EU after 2021 were classified as securities under MiCA.,stfu,2
+zk-rollups were invented in 2021.,stfu,4
+Coinbase wallets support both Ethereum and Base.,yes,3
+Gwei is equal to one trillion ETH.,stfu,4
+DeFi summer happened in 2020.,yes,4
+Circle issues USDT.,stfu,4
