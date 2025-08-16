@@ -83,7 +83,7 @@ export default function QuizGame() {
           </CardHeader>
           <CardContent className="text-center space-y-4">
             <p className="text-lg font-medium">
-              You completed all 40 questions!
+              You completed all 120 questions!
             </p>
             <p className="text-xl font-bold">
               Final Score: {gameState.score}

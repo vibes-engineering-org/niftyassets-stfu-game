@@ -20,9 +20,9 @@ export const useQuizGame = () => {
     currentQuestionIndex: 0,
     score: 0,
     currentSession: 1,
-    totalSessions: 4, // 40 questions / 10 per session = 4 sessions
+    totalSessions: 10, // 120 questions / 12 per session = 10 sessions
     questionsInSession: 0,
-    maxQuestionsPerSession: 10,
+    maxQuestionsPerSession: 12,
     gameOver: false,
     gameCompleted: false,
     showGameOverPopup: false,
@@ -110,9 +110,9 @@ export const useQuizGame = () => {
       currentQuestionIndex: 0,
       score: 0,
       currentSession: 1,
-      totalSessions: 4,
+      totalSessions: 10,
       questionsInSession: 0,
-      maxQuestionsPerSession: 10,
+      maxQuestionsPerSession: 12,
       gameOver: false,
       gameCompleted: false,
       showGameOverPopup: false,
